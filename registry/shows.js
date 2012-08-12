@@ -62,8 +62,10 @@ shows.package = function (doc, req) {
         }
 
         var h = "http://" + req.headers.Host
+        var full_url = h + basePath + t
+        full_url = full_url.replace(/registry.npmjs.org\/-\//, 'registry.npmjs.org/' + doc._id + '/-/')
 
-        doc.versions[v].dist.tarball = h + basePath + t
+        doc.versions[v].dist.tarball = full_url
       }
     }
   }
